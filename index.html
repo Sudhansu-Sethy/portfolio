@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sudhansu Sethy | Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<style>
+html{scroll-behavior:smooth}
+
+/* =====================
+   VARIABLES
+===================== */
+:root{
+  --card:rgba(255,255,255,0.06);
+  --border:rgba(255,255,255,0.12);
+  --purple:#8b5cf6;
+  --cyan:#22d3ee;
+  --text:#e5e7eb;
+  --muted:#9ca3af;
+  --header-height:80px;
+}
+
+/* =====================
+   BASE
+===================== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Poppins,sans-serif;
+}
+
+body{
+  background:radial-gradient(circle at top,#14002e,#020205);
+  color:var(--text);
+}
+
+section{
+  padding:110px 8%;
+}
+
+a{text-decoration:none;color:inherit}
+
+/* =====================
+   HEADER
+===================== */
+header{
+  position:fixed;
+  top:0;
+  width:100%;
+  height:var(--header-height);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 8%;
+  backdrop-filter:blur(14px);
+  background:rgba(0,0,0,.45);
+  border-bottom:1px solid var(--border);
+  z-index:1000;
+}
+
+header h1 a{
+  background:linear-gradient(135deg,var(--purple),var(--cyan));
+  -webkit-background-clip:text;
+  color:transparent;
+  font-size:22px;
+}
+
+nav a{
+  margin-left:clamp(8px,1.5vw,20px);
+  color:var(--muted);
+  font-size:clamp(13px,1.4vw,16px);
+}
+
+nav a:hover{color:var(--cyan)}
+
+.cta{
+  padding:10px 22px;
+  border-radius:30px;
+  background:linear-gradient(135deg,var(--purple),var(--cyan));
+  color:#000;
+  font-weight:600;
+}
+
+/* =====================
+   HERO
+===================== */
+#home{
+  padding-top:calc(var(--header-height) + 40px);
+}
+
+.hero{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:clamp(30px,5vw,70px);
+  align-items:center;
+}
+
+.hero h2{
+  font-size:clamp(32px,5vw,56px);
+}
+
+.hero h2 span{
+  background:linear-gradient(135deg,var(--purple),var(--cyan));
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.hero p{
+  color:var(--muted);
+  margin:20px 0;
+  max-width:520px;
+}
+
+.btn{
+  padding:14px 30px;
+  border-radius:30px;
+  border:1px solid var(--border);
+  background:transparent;
+  color:var(--text);
+  cursor:pointer;
+  transition:.3s;
+}
+
+.btn.primary{
+  background:linear-gradient(135deg,var(--purple),var(--cyan));
+  color:#000;
+  border:none;
+}
+
+.btn.primary:hover{
+  box-shadow:0 0 25px rgba(34,211,238,.6);
+  transform:translateY(-2px);
+}
+
+.hero-links{
+  margin-top:22px;
+  display:flex;
+  gap:14px;
+}
+
+.contact-pill{
+  padding:10px 18px;
+  border-radius:999px;
+  background:var(--card);
+  border:1px solid var(--border);
+  font-size:14px;
+  color:var(--cyan);
+}
+
+.contact-pill:hover{
+  background:linear-gradient(135deg,var(--purple),var(--cyan));
+  color:#000;
+}
+
+.profile{
+  display:flex;
+  justify-content:center;
+}
+
+.profile img{
+  width:min(70vw,320px);
+  aspect-ratio:1/1;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid var(--border);
+  box-shadow:0 0 80px rgba(139,92,246,.6);
+}
+
+/* =====================
+   SECTION TITLES
+===================== */
+.section-title{
+  text-align:center;
+  margin-bottom:60px;
+}
+
+.section-title span{
+  color:var(--cyan);
+  font-size:14px;
+}
+
+.section-title h3{
+  font-size:36px;
+  margin-top:10px;
+}
+
+/* =====================
+   PROFILE
+===================== */
+.profile-card{
+  max-width:900px;
+  margin:auto;
+  background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02));
+  border:1px solid var(--border);
+  padding:34px;
+  border-radius:22px;
+  color:var(--muted);
+  line-height:1.8;
+}
+
+/* =====================
+   GRID
+===================== */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:30px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:24px;
+}
+
+/* =====================
+   ACHIEVEMENTS
+===================== */
+.achievement-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+}
+
+.achievement-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  overflow:hidden;
+}
+
+.achievement-card img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  cursor:pointer;
+}
+
+.achievement-content{
+  padding:20px;
+}
+
+.achievement-content h4{
+  margin-bottom:8px;
+}
+
+.achievement-content p{
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.6;
+}
+
+/* =====================
+   IMAGE MODAL
+===================== */
+.image-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.85);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:3000;
+}
+
+.image-modal.active{
+  display:flex;
+}
+
+.image-modal img{
+  max-width:90%;
+  max-height:90%;
+  border-radius:12px;
+  box-shadow:0 0 60px rgba(0,0,0,.8);
+}
+
+/* =====================
+   TIMELINE
+===================== */
+.timeline{
+  position:relative;
+  max-width:1000px;
+  margin:auto;
+}
+
+.timeline::before{
+  content:"";
+  position:absolute;
+  top:0;bottom:0;
+  left:50%;
+  width:2px;
+  background:linear-gradient(to bottom,transparent,var(--purple),var(--cyan),transparent);
+}
+
+.timeline-item{
+  width:50%;
+  padding:20px 40px;
+  position:relative;
+}
+
+.timeline-item.left{text-align:right}
+.timeline-item.right{left:50%}
+
+.timeline-dot{
+  position:absolute;
+  top:30px;
+  width:26px;
+  height:26px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--purple),var(--cyan));
+}
+
+.timeline-item.left .timeline-dot{right:-13px}
+.timeline-item.right .timeline-dot{left:-13px}
+
+/* =====================
+   CONTACT
+===================== */
+.contact-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:60px;
+}
+
+.contact-item{
+  display:flex;
+  gap:16px;
+  margin-bottom:18px;
+  color:var(--muted);
+}
+
+.contact-icon{
+  width:46px;
+  height:46px;
+  border-radius:14px;
+  background:linear-gradient(135deg,var(--purple),var(--cyan));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#000;
+}
+
+input,textarea,select{
+  width:100%;
+  padding:16px;
+  background:#0b0b16;
+  border:1px solid var(--border);
+  border-radius:14px;
+  color:var(--text);
+  margin-bottom:16px;
+}
+
+textarea{height:150px;resize:none}
+
+/* =====================
+   TOAST
+===================== */
+.toast{
+  position:fixed;
+  bottom:30px;
+  right:30px;
+  background:linear-gradient(135deg,#22d3ee,#8b5cf6);
+  color:#000;
+  padding:16px 22px;
+  border-radius:14px;
+  font-weight:600;
+  z-index:2000;
+}
+
+/* =====================
+   REVEAL
+===================== */
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:.8s;
+}
+
+.reveal.active{
+  opacity:1;
+  transform:none;
+}
+
+/* =====================
+   MOBILE
+===================== */
+@media (max-width:768px){
+  header{
+    flex-direction:column;
+    align-items:flex-start;
+    height:auto;
+    padding:14px 6%;
+  }
+
+  nav{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:10px;
+  }
+
+  .timeline::before{left:20px}
+  .timeline-item{
+    width:100%;
+    padding-left:60px;
+    text-align:left;
+  }
+  .timeline-item.right{left:0}
+  .timeline-dot{left:6px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1><a href="#home">SUDHANSU SETHY.</a></h1>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#profile">Profile</a>
+    <a href="#academics">Academics</a>
+    <a href="#skills">Skills</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#hobbies">Hobbies</a>
+    <a href="#contact" class="cta">Get in Touch</a>
+  </nav>
+</header>
+
+<section id="home" class="hero reveal">
+  <div>
+    <h2>Hi, I'm <span>Sudhansu Sethy</span></h2>
+    <p>MCA student passionate about programming, problem-solving and clean software development.</p>
+    <a href="Sudhansu_Sethy_Resume.pdf" download class="btn primary">Download Resume</a>
+    <div class="hero-links">
+      <a href="https://linkedin.com/in/sudhansu-sethy" target="_blank" class="contact-pill">LinkedIn</a>
+    </div>
+  </div>
+  <div class="profile">
+    <img src="profile.jpg" alt="Profile">
+  </div>
+</section>
+
+<section id="profile" class="reveal">
+  <div class="section-title"><span>PROFILE</span><h3>About Me</h3></div>
+  <div class="profile-card">
+    I’m an analytical and ambitious learner with a strong academic background and a genuine interest in programming. I enjoy working with languages like C, Java, MySQL and I have practical experience with Data Structures and Object-Oriented Programming to real projects. I like building things that are scalable and useful, and I take pride in writing code that is clean, efficient, and easy to maintain. Problem-solving motivates me, and I’m always eager to learn new approaches and improve my skills.
+  </div>
+</section>
+
+<section id="academics" class="reveal">
+  <div class="section-title"><span>ACADEMICS</span><h3>Academic History</h3></div>
+  <div class="timeline">
+
+
+    
+<div class="timeline-item left"><div class="timeline-dot"></div>
+  <div class="card"><h4>MCA (2024–Present)</h4><p>MSCB University – 79.44% till 2nd semester</p>
+<div style="display:flex;gap:12px;margin-top:14px;flex-wrap:nowrap;">
+<a href="MCA.pdf" target="_blank" download class="btn primary" style="white-space:nowrap;">Certificate/Marksheet</a>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="timeline-item right"><div class="timeline-dot"></div>
+  <div class="card"><h4>B.Sc ITM (2021–2024)</h4><p>Ravenshaw University – 74.15%</p>
+    <div style="display:flex;gap:12px;margin-top:14px;flex-wrap:nowrap;">
+        <a href="bsc-itm-certificate.pdf" target="_blank" download class="btn primary" style="margin-right:12px;white-space:nowrap;">Certificate</a><a href="bsc-itm-marksheet.pdf" target="_blank" download class="btn primary" style="white-space:nowrap;">Marksheet</a>
+    </div>
+  </div>
+</div>
+
+
+<div class="timeline-item left"><div class="timeline-dot"></div>
+  <div class="card"><h4>12th Science (2019–2021)</h4><p>Baba Bhairabananda Higher Secondary School Chandikhol – 67%</p>
+<div style="display:flex;gap:12px;margin-top:14px;flex-wrap:nowrap;">
+<a href="12th-certificate.pdf" target="_blank" download class="btn primary" style="white-space:nowrap;">Certificate</a><a href="12th-marksheet.pdf" target="_blank" download class="btn primary" style="white-space:nowrap;">Marksheet</a>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="timeline-item right"><div class="timeline-dot"></div>
+  <div class="card"><h4>10th Board (2019)</h4><p>Jagulaee High School, Kotapur, Jajpur – 70%</p>
+<div style="display:flex;gap:12px;margin-top:14px;flex-wrap:nowrap;">
+<a href="10th-Board-certificate.pdf" target="_blank" download class="btn primary" style="white-space:nowrap;">Certificate/Marksheet</a>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="timeline-item left"><div class="timeline-dot"></div>
+  <div class="card"><h4>SWAYAM NPTEL (2025)</h4><p>Internet of Things– 75%</p>
+<div style="display:flex;gap:12px;margin-top:14px;flex-wrap:nowrap;">
+<a href="Introduction to Internet of Things.pdf" target="_blank" download class="btn primary" style="white-space:nowrap;">Certificate/Marksheet</a>
+    </div>
+  </div>
+</div>
+
+
+  </div>
+</section>
+
+<section id="skills" class="reveal">
+  <div class="section-title"><span>SKILLS</span><h3>My Skills</h3></div>
+  <div class="grid">
+    <div class="card">Good Team Work</div>
+    <div class="card">Good Communication</div>
+    <div class="card">Problem-Solving</div>
+    <div class="card">Creative Thinking</div>
+    <div class="card">Organization & Time Management</div>
+    <div class="card" style="color:#22d3ee;font-weight:600;">C Programming</div>
+    <div class="card" style="color:#22d3ee;font-weight:600;">Java</div>
+    <div class="card"style="color:#22d3ee;font-weight:600;">MySQL</div>
+    <div class="card"style="color:#22d3ee;font-weight:600;">DSA</div>
+  </div>
+</section>
+
+<section id="achievements" class="reveal">
+  <div class="section-title">
+    <span>ACHIEVEMENTS</span>
+    <h3>My Achievements</h3>
+  </div>
+
+  <div class="achievement-grid">
+    <div class="achievement-card">
+      <img src="achievement1.jpg" alt="Achievement" class="zoomable">
+      <div class="achievement-content">
+        <h4>ODISHA AI SYMPOSIUM 2025</h4>
+        <p>CERTIFICATE for participating in Odisha AI Symposium (OAIS) 2025 and for securing First place in Northern Odisha region.</p>
+      </div>
+    </div>
+
+    <div class="achievement-card">
+      <img src="achievement2.jpg" alt="Achievement" class="zoomable">
+      <div class="achievement-content">
+        <h4>Certificate of Participation in 2nd Industry Academia Interface Meet (AIIM) 2025.</h4>
+        <p>A certificate from Maharaja Sriram Chandra Bhanja Deo University’s HRDC awarding Sudhanshu Sethy of the Computer Application department for participating in the PM-USHA sponsored 2nd Industry Academia Interface Meet (AIIM) 2025, held 6–12 Nov 2025.</p>
+      </div>
+    </div>
+
+     <div class="achievement-card">
+      <img src="achievement3.jpg" alt="Achievement" class="zoomable">
+      <div class="achievement-content">
+        <h4>.....</h4>
+        <p>.....</p>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+<section id="hobbies" class="reveal">
+  <div class="section-title"><span>HOBBIES</span><h3>Interests</h3></div>
+  <div class="grid">
+    <div class="card">Reading Books</div>
+    <div class="card">Writing Poems</div>
+    <div class="card">Listening To Music</div>
+    <div class="card">Graphics Design</div>
+  </div>
+</section>
+
+<section id="contact" class="reveal">
+  <div class="section-title"><span>CONTACT</span><h3>Get In Touch</h3></div>
+  <div class="contact-grid">
+    <div>
+      <div class="contact-item"><div class="contact-icon">📞</div>+91 7735855944</div>
+      <div class="contact-item"><div class="contact-icon">📧</div>sudhansusethy12345@gmail.com</div>
+      <div class="contact-item"><div class="contact-icon">🔗</div><a href="https://linkedin.com/in/sudhansu-sethy" target="_blank">linkedin.com/in/sudhansu-sethy</a></div>
+      <div class="contact-item"><div class="contact-icon">📍</div>Jajpur, Odisha, 755008</div>
+    </div>
+
+    <form id="contact-form">
+      <input type="text" name="from_name" placeholder="Your Name" required>
+      <input type="email" name="from_email" placeholder="Your Email" required>
+      <select name="subject" required>
+        <option value="">Select Inquiry Type</option>
+        <option>Internship / Job Opportunity</option>
+        <option>Freelance Project</option>
+        <option>Collaboration</option>
+        <option>General Inquiry</option>
+      </select>
+      <textarea name="message" placeholder="Your Message..." required></textarea>
+      <button class="btn primary" type="submit">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<div id="toast" style="display:none">
+  <div class="toast">✓ Message sent successfully</div>
+</div>
+
+<!-- IMAGE MODAL -->
+<div id="imageModal" class="image-modal">
+  <img id="modalImage" src="" alt="Achievement Preview">
+</div>
+
+<script>
+emailjs.init("WpDuwWDXfzn4IfOk-");
+
+const form=document.getElementById("contact-form");
+const toast=document.getElementById("toast");
+
+form.addEventListener("submit",e=>{
+  e.preventDefault();
+  emailjs.sendForm("service_fwtcadj","template_wnfe4xm",form).then(()=>{
+    form.reset();
+    toast.style.display="block";
+    setTimeout(()=>toast.style.display="none",4000);
+  });
+});
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("active");
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:0.2});
+
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+
+/* IMAGE OPEN */
+const modal=document.getElementById("imageModal");
+const modalImg=document.getElementById("modalImage");
+
+document.querySelectorAll(".zoomable").forEach(img=>{
+  img.addEventListener("click",()=>{
+    modalImg.src=img.src;
+    modal.classList.add("active");
+  });
+});
+
+modal.addEventListener("click",()=>{
+  modal.classList.remove("active");
+  modalImg.src="";
+});
+</script>
+
+</body>
+</html>
